@@ -5,17 +5,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item
-    *ngIf="!items.length; else withItems"
-    class="ion-text-center"
-    lines="none"
-  >
+  <ion-item *ngIf="!items.length" class="ion-text-center" lines="none">
     <ion-label>There are no items yet!</ion-label>
   </ion-item>
 
-  <ng-template #withItems>
-    <ion-item *ngFor="let item of items">
-      <ion-label> {{item}} </ion-label>
-    </ion-item>
-  </ng-template>
+  <ion-list *ngIf="items.length">
+    <ion-item-sliding *ngFor="let item of items">
+      <ion-item>
+        <ion-label> {{item}} </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="removeItem(item)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
