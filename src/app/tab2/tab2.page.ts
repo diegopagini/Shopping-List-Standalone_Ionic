@@ -13,6 +13,4 @@ import {
   standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonContent],
 })
-export class Tab2Page {
-  constructor() {}
-}
+export class Tab2Page {}
