@@ -1,13 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Shoop List </ion-title>
+    <ion-title> Shooping List </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Shoop List</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-input [(ngModel)]="item" label="Item" name="item" type="text">
+    </ion-input>
+    <ion-button (click)="addItem()" [disabled]="!item">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
 </ion-content>

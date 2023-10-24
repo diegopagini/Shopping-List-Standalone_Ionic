@@ -7,7 +7,7 @@ import {
   IonTabs,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { addCircleOutline, cartOutline } from 'ionicons/icons';
+import { addCircleOutline, addOutline, cartOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tabs',
@@ -18,6 +18,6 @@ import { addCircleOutline, cartOutline } from 'ionicons/icons';
 })
 export class TabsPage {
   constructor() {
-    addIcons({ cartOutline, addCircleOutline });
+    addIcons({ cartOutline, addCircleOutline, addOutline });
   }
 }
