@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
+  AlertController,
   IonButton,
   IonContent,
   IonHeader,
@@ -33,12 +34,38 @@ import { ShoppingService } from '../services/shopping.service';
 export class Tab2Page {
   item: string;
 
-  constructor(private readonly _shoopingService: ShoppingService) {
+  constructor(
+    private readonly _shoopingService: ShoppingService,
+    private readonly _alertController: AlertController
+  ) {
     this.item = '';
   }
 
   addItem(): void {
-    if (!this._shoopingService.existsItem(this.item))
+    if (!this._shoopingService.existsItem(this.item)) {
       this._shoopingService.addItem(this.item);
+      this.item = '';
+      this.alertSuccess();
+    } else this.alertError();
+  }
+
+  async alertSuccess(): Promise<void> {
+    const alert = await this._alertController.create({
+      header: 'Success',
+      message: 'Item added!',
+      buttons: ['ok'],
+    });
+
+    await alert.present();
+  }
+
+  async alertError(): Promise<void> {
+    const alert = await this._alertController.create({
+      header: 'Error',
+      message: 'Item already created!',
+      buttons: ['ok'],
+    });
+
+    await alert.present();
   }
 }

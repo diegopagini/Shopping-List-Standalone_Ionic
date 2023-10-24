@@ -17,6 +17,10 @@ export class ShoppingService {
     this.isEmpty = false;
   }
 
+  getItems(): string[] {
+    return this.items;
+  }
+
   removeItem(item: string): void {
     const index = this.items.findIndex(
       (el: string) => el.toLowerCase().trim() === item.toLowerCase().trim()

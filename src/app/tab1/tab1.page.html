@@ -5,9 +5,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Shooping List</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item
+    *ngIf="!items.length; else withItems"
+    class="ion-text-center"
+    lines="none"
+  >
+    <ion-label>There are no items yet!</ion-label>
+  </ion-item>
+
+  <ng-template #withItems>
+    <ion-item *ngFor="let item of items">
+      <ion-label> {{item}} </ion-label>
+    </ion-item>
+  </ng-template>
 </ion-content>
