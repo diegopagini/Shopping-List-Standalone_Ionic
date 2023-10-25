@@ -23,6 +23,6 @@ import {
 })
 export class TabsPage {
   constructor() {
-    addIcons({ cartOutline, addCircleOutline, addOutline, trashOutline });
+    addIcons({ addCircleOutline, addOutline, cartOutline, trashOutline });
   }
 }

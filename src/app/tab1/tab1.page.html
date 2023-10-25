@@ -1,25 +1,51 @@
+<ion-menu side="end" content-id="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item (click)="removeAllItems()" [disabled]="!items.length">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        <ion-label>Delete all items</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title> Shooping List </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" id="content">
   <ion-item *ngIf="!items.length" class="ion-text-center" lines="none">
     <ion-label>There are no items yet!</ion-label>
   </ion-item>
 
   <ion-list *ngIf="items.length">
-    <ion-item-sliding *ngFor="let item of items">
-      <ion-item>
-        <ion-label> {{item}} </ion-label>
-      </ion-item>
+    <ion-reorder-group
+      [disabled]="false"
+      (ionItemReorder)="onRenderItems($event)"
+    >
+      <ion-item-sliding *ngFor="let item of items">
+        <ion-item>
+          <ion-label> {{item}} </ion-label>
+          <ion-reorder></ion-reorder>
+        </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="removeItem(item)">
-          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="removeItem(item)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-reorder-group>
   </ion-list>
 </ion-content>

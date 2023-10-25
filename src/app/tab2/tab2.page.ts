@@ -35,8 +35,8 @@ export class Tab2Page {
   item: string;
 
   constructor(
-    private readonly _shoopingService: ShoppingService,
-    private readonly _alertController: AlertController
+    private readonly _alertController: AlertController,
+    private readonly _shoopingService: ShoppingService
   ) {
     this.item = '';
   }
